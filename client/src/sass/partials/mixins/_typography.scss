@@ -1,0 +1,21 @@
+// This file regroups all typo mixins.
+// @author Lilian Thiebault
+
+@import '../material/theme-variables';
+@import '../variables/typography';
+
+@mixin h1 {
+    font-family: $title-typo;
+    font-style: normal;
+    font-weight: $fw-regular;
+    font-size: $fs2;
+    letter-spacing: auto;
+}
+
+@mixin h2 {
+    font-family: $title-typo;
+    font-style: normal;
+    font-weight: $fw-bold;
+    font-size: $fs1;
+    letter-spacing: auto;
+}

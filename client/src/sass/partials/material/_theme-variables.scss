@@ -1,0 +1,29 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+
+// Import custom palettes
+@import './custom-palettes';
+
+// Define the palettes for your theme using the Material Design palettes available in custom-palettes.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$blog-primary: mat-palette($blog-primary-palette);
+$blog-accent: mat-palette($blog-accent-palette);
+$blog-warn: mat-palette($blog-warn-palette);
+$blog-on: $blog-on-palette;
+
+// Create the theme object: a Sass map containing all of the palettes
+$blog-light-theme: mat-light-theme((
+    color: (
+        primary: $blog-primary,
+        accent: $blog-accent,
+        warn: $blog-warn,
+        on: $blog-on,
+    )
+));
+
+// Typography
+$custom-body-typography: mat-typography-config(
+    $font-family: '"Google Sans Text Beta", Roboto, sans-serif',
+);

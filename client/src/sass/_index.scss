@@ -1,0 +1,7 @@
+// Import variables first
+// The goal is to be able to have them
+// wherever in the app without import statement
+@import './partials/variables';
+// --- //
+@import './partials/material';
+@import './partials/mixins';
