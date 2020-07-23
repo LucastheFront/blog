@@ -1,50 +1,53 @@
-import db from '../db/db';
+import models from '../models';
 
 class PostsController {
-    getAllPosts(req, res) {
-        res.status(200).send({
-            success: 'true',
-            message: 'blog posts retrieved successfully',
-            posts: db
-        });
-    }
-
-    getPost(req, res) {
-        const id = parseInt(req.params.id, 10);
-        db.map((post) => {
-            if (post.postId === id) {
-                return res.status(200).send({
-                    success: 'true',
-                    message: 'post retrieved successfully',
-                    post
-                });
-            }
-        });
-        return res.status(400).send({
-            success: 'false',
-            message: 'post does not exist',
-        });
-    }
-
-    createPost(req, res) {
-        if (!req.body.title || !req.body.description) {
-            res.status(400).send({
-                success: 'false',
-                message: 'title or description are required'
-            });
+    async getAllPosts (req, res) {
+        try {
+            const data = await models.Post.find();
+            res.status(200).json({
+                success: 'true',
+                message: 'blog posts retrieved successfully',
+                posts: data,
+            })
+        } catch (error) {
+            res.status(500).json({message: error.message})
         }
-        const newPost = {
-            postId: db.length + 1,
+    }
+
+    async getPost(req, res) {
+        try {
+            const data = await models.Post.findById(req.params.id);
+            if (data == null) {
+                return res.status(404).json({
+                    message: 'Cannot find post',
+                })
+            }
+
+            res.status(200).json({
+                success: 'true',
+                message: 'blog posts retrieved succcessfully',
+                post: data,
+            })
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+
+    async createPost(req, res) {
+        const post = new models.Post({
             title: req.body.title,
             description: req.body.description,
-            article: req.body.article
-        }
-        db.push(newPost);
-        return res.status(200).send({
-            success: 'true',
-            message: 'new post successfully added to db',
-            newPost
+            article: req.body.article,
+            author: req.body.author,
         });
+        try {
+            const newPost = await post.save();
+            res.status(201).json({
+                newPost: newPost
+            });
+        } catch (error) {
+            res.status(400).json({message: error.message})
+        }
     }
 }
 
