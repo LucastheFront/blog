@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js --exec babel-node --"
+    "start": "nodemon app.js --exec babel-node --",
+    "build": "babel-node app.js"
   },
   "author": "Lucas Besnard",
   "license": "ISC",

@@ -4,7 +4,10 @@ import Post from './post';
 const connectDb = () => {
     const connect = mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
     const db = mongoose.connection;
-    db.on('error', console.error.bind(console, "connection error:"));
+    db.on('error', () => {
+        console.error("connection error:");
+        process.exit(1);
+    });
     db.once('open', function() {
         console.log('Successfully connected to the db!')
     });
