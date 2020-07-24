@@ -1,0 +1,11 @@
+@import 'mixins/typography';
+@import 'variables/layout';
+
+.layout {
+    margin: 0px 140px;
+
+    .page-title {
+        display: block;
+        margin-top: $sp5;
+    }
+}
