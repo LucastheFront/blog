@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderModule } from '@shared/header/header.component.module';
-import { H1Module } from '@shared/typography/h1/h1.component.module';
 import { HomeLayout } from './home.layout';
-import { PostCardComponentModule } from '../components/post-card/post-card.component.module';
+import { LatestPostsPageModule } from '@modules/home/pages/latest-posts/latest-posts.page.module';
 
 @NgModule({
     declarations: [
@@ -12,8 +11,7 @@ import { PostCardComponentModule } from '../components/post-card/post-card.compo
     imports: [
         CommonModule,
         HeaderModule,
-        H1Module,
-        PostCardComponentModule
+        LatestPostsPageModule
     ],
     exports: []
 })
