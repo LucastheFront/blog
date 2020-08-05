@@ -3,13 +3,22 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const postSchema = new Schema(
     {
+        image: {
+            type: String,
+            required: true,
+        },
         title: {
             type: String,
             required: true,
         },
-        description: String,
-        image: String,
-        author: String,
+        article: {
+            type: String,
+            required: true,
+        },
+        author: {
+            type: String,
+            required: true,
+        }
     },
     { timestamps: true },
 );

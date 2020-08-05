@@ -5,8 +5,6 @@ class PostsController {
         try {
             const data = await models.Post.find();
             res.status(200).json({
-                success: 'true',
-                message: 'blog posts retrieved successfully',
                 posts: data,
             })
         } catch (error) {
@@ -24,8 +22,6 @@ class PostsController {
             }
 
             res.status(200).json({
-                success: 'true',
-                message: 'blog posts retrieved succcessfully',
                 post: data,
             })
         } catch (error) {
@@ -35,8 +31,8 @@ class PostsController {
 
     async createPost(req, res) {
         const post = new models.Post({
+            image: req.body.image,
             title: req.body.title,
-            description: req.body.description,
             article: req.body.article,
             author: req.body.author,
         });

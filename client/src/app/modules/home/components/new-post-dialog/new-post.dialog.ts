@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
+import { BaseHttpService } from '@core/api/base-http.service';
 
 @Component({
     selector: 'bg-new-post-dialog',
@@ -12,7 +13,10 @@ import { NgForm } from '@angular/forms';
 export class NewPostDialog {
     public addPicture = 'Add a picture';
 
-    constructor(public dialogRef: MatDialogRef<NewPostDialog>, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    constructor(public dialogRef: MatDialogRef<NewPostDialog>,
+                iconRegistry: MatIconRegistry,
+                sanitizer: DomSanitizer,
+                private httpService: BaseHttpService) {
         iconRegistry.addSvgIcon(
             'upload-image',
             sanitizer.bypassSecurityTrustResourceUrl('assets/icons/upload-image.svg')
@@ -32,7 +36,9 @@ export class NewPostDialog {
     }
 
     onSubmit(form: NgForm): void {
-        console.log(form.value);
+        this.httpService.createPost(form.value).subscribe(
+            response => console.log(response),
+            error => console.log(error));
     }
 
 }

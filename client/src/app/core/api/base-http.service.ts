@@ -11,7 +11,11 @@ export class BaseHttpService {
 
     constructor(private httpClient: HttpClient) {}
 
-    public getPosts(): Observable<Post> {
-        return this.httpClient.get<Post>(`${this.url}/posts`);
+    public getPosts(): Observable<Post[]> {
+        return this.httpClient.get<Post[]>(`${this.url}/posts`);
+    }
+
+    public createPost(post: Post): Observable<Post> {
+        return this.httpClient.post<Post>(`${this.url}/posts`, post);
     }
 }
