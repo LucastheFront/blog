@@ -1,0 +1,41 @@
+<bg-h1>Create a new post</bg-h1>
+
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <label class="upload-image" for="upload-image">
+    <mat-icon class="icon" svgIcon="upload-image" aria-hidden="false" aria-label="Upload new image"></mat-icon>
+    <p>{{ addPicture }}</p>
+  </label>
+  <input type="file" 
+         accept="image/png, image/jpeg"
+         id="upload-image"
+         (change)="getFileName($event)"
+         name="uploadImage"
+         ngModel
+         required>
+  
+  <div class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput name="title" ngModel required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Article</mat-label>
+        <textarea cdkTextareaAutosize 
+                  cdkAutosizeMinRows="6"
+                  matInput
+                  name="article"
+                  ngModel
+                  required>
+        </textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Author</mat-label>
+        <input matInput name="author" ngModel required>
+    </mat-form-field>
+  </div>  
+
+  <div class="actions" mat-dialog-actions>
+    <button mat-stroked-button (click)="onClose()">Close</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Post it</button>
+  </div>
+</form>

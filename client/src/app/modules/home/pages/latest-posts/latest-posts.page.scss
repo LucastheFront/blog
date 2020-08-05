@@ -1,6 +1,12 @@
+@import 'variables/layout';
+
 .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: $sp3;
+
+    .create-post {
+        box-shadow: none;
+    }
 }

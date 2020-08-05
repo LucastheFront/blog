@@ -8,7 +8,7 @@
     font-family: $title-typo;
     font-style: normal;
     font-weight: $fw-regular;
-    font-size: $fs2;
+    font-size: $fs3;
     letter-spacing: normal;
 }
 
@@ -16,12 +16,18 @@
     font-family: $title-typo;
     font-style: normal;
     font-weight: $fw-bold;
-    font-size: $fs1;
+    font-size: $fs2;
     letter-spacing: normal;
 }
 
 @mixin body($fw-param) {
-    font-family: mat-font-family($custom-body-typography);
+    font-style: normal;
+    font-weight: $fw-param;
+    font-size: $fs1;
+    letter-spacing: normal;
+}
+
+@mixin extract($fw-param) {
     font-style: normal;
     font-weight: $fw-param;
     font-size: $fs0;

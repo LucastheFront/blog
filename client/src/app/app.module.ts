@@ -9,7 +9,7 @@ import { BaseHttpService } from '@core/api/base-http.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

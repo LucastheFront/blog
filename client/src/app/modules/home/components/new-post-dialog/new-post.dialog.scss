@@ -1,0 +1,33 @@
+@import 'mixins/typography';
+@import 'variables/layout';
+@import 'material/custom-palettes';
+
+.upload-image {
+    @include body(500);
+    color: map-get($map: $blog-on-palette, $key: on-background-medium-emphasis);
+    display: flex;
+    align-items: center;
+    margin: $sp5 0 $sp3 0;
+
+    &:hover {
+        cursor: pointer;
+    }
+    
+    .icon {
+        margin-right: $sp1;
+    }
+}
+
+#upload-image {
+    opacity: 0;
+    position: absolute;
+}
+
+.form {
+    display: grid;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
