@@ -1,41 +1,37 @@
 <bg-h1>Create a new post</bg-h1>
 
-<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+<form [formGroup]="newPostForm" (ngSubmit)="onSubmit()" method="POST" enctype="multipart/form-data">
   <label class="upload-image" for="upload-image">
     <mat-icon class="icon" svgIcon="upload-image" aria-hidden="false" aria-label="Upload new image"></mat-icon>
-    <p>{{ addPicture }}</p>
+    <p>{{ labelText }}</p>
   </label>
   <input type="file" 
          accept="image/png, image/jpeg"
          id="upload-image"
          (change)="getFileName($event)"
-         name="image"
-         ngModel
-         required>
+         formControlName="image">
   
   <div class="form">
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
-      <input matInput name="title" ngModel required>
+      <input matInput type="text" formControlName="title">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Article</mat-label>
-        <textarea cdkTextareaAutosize 
+        <textarea matInput
+                  cdkTextareaAutosize 
                   cdkAutosizeMinRows="6"
-                  matInput
-                  name="article"
-                  ngModel
-                  required>
+                  formControlName="article">
         </textarea>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Author</mat-label>
-        <input matInput name="author" ngModel required>
+        <input matInput type="text" formControlName="author">
     </mat-form-field>
   </div>  
 
   <div class="actions" mat-dialog-actions>
     <button mat-stroked-button (click)="onClose()">Close</button>
-    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Post it</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="newPostForm.invalid">Post it</button>
   </div>
 </form>

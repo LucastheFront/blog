@@ -38,7 +38,6 @@ class PostsController {
         });
         try {
             const newPost = await post.save();
-            console.log(newPost);
             res.status(201).json({
                 newPost: newPost
             });

@@ -15,7 +15,7 @@ export class BaseHttpService {
         return this.httpClient.get<Post[]>(`${this.url}/posts`);
     }
 
-    public createPost(post: Post): Observable<Post> {
+    public createPost(post: FormData): Observable<Post> {
         return this.httpClient.post<Post>(`${this.url}/posts`, post);
     }
 }

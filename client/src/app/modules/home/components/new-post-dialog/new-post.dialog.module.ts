@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { H1Module } from '@shared/typography/h1/h1.component.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NewPostDialog } from './new-post.dialog';
 
@@ -20,7 +20,7 @@ import { NewPostDialog } from './new-post.dialog';
         H1Module,
         MatIconModule,
         MatButtonModule,
-        FormsModule
+        ReactiveFormsModule
     ],
     exports: [NewPostDialog],
     entryComponents: [NewPostDialog]
