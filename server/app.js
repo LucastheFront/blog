@@ -1,18 +1,16 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import bodyParser from 'body-parser';
 import router from './routes/index';
 import { connectDb } from './models';
 
-dotenv.config()
 // Set up the express app
+dotenv.config()
 const app = express();
 var cors = require('cors');
 
-// Use cors, parse incoming requests data and use router to make the calls
+// Use cors, make uploads folder public and use router to make the calls
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/uploads', express.static('uploads'));
 app.use(router);
 
 app.get("/", (req, res) => {

@@ -31,13 +31,14 @@ class PostsController {
 
     async createPost(req, res) {
         const post = new models.Post({
-            image: req.body.image,
+            image: req.file.path,
             title: req.body.title,
             article: req.body.article,
             author: req.body.author,
         });
         try {
             const newPost = await post.save();
+            console.log(newPost);
             res.status(201).json({
                 newPost: newPost
             });
