@@ -4,6 +4,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BaseHttpService } from '@core/api/base-http.service';
 import { NewPostDialog } from '@modules/home/components/new-post-dialog/new-post.dialog';
+import { Post } from '@core/api/post.model';
 
 @Component({
     selector: 'bg-latest-posts',
@@ -11,7 +12,7 @@ import { NewPostDialog } from '@modules/home/components/new-post-dialog/new-post
     styleUrls: ['./latest-posts.page.scss']
 })
 export class LatestPostsPage implements OnInit {
-    public posts: any;
+    public posts: Post[];
 
     constructor(private http: BaseHttpService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public dialog: MatDialog) {
         iconRegistry.addSvgIcon(
@@ -22,9 +23,9 @@ export class LatestPostsPage implements OnInit {
 
     ngOnInit(): void {
         this.http.getPosts().subscribe(
-            response => {
-                this.posts = response;
+            (response: any) => {
                 console.log(response);
+                this.posts = response.posts;
             },
             error => console.log(error)
         );
