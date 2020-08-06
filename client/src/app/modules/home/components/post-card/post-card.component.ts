@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Post } from '@core/api/post.model';
 
 @Component({
@@ -7,9 +8,21 @@ import { Post } from '@core/api/post.model';
     styleUrls: ['./post-card.component.scss']
 })
 export class PostCardComponent implements OnInit {
-    @Input() uniquePost: Post;
+    @Input() uniquePost;
+    imageArrayBuffer: Array<number>;
+    imageUrl;
 
-    constructor() {}
+    constructor(private domSanitizer: DomSanitizer) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.imageArrayBuffer = this.uniquePost.image.data.data;
+        const typedArray = new Uint8Array(this.imageArrayBuffer);
+        const stringChar = typedArray.reduce((data, byte) => {
+            return data + String.fromCharCode(byte);
+        }, '');
+        const base64String = btoa(stringChar);
+        this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl('data:' + this.uniquePost.image.contentType + ';base64' + base64String);
+        this.imageUrl = this.imageUrl.changingThisBreaksApplicationSecurity;
+        console.log(this.imageUrl);
+    }
 }

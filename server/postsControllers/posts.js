@@ -1,4 +1,5 @@
 import models from '../models';
+var fs = require('fs');
 
 class PostsController {
     async getAllPosts (req, res) {
@@ -31,7 +32,10 @@ class PostsController {
 
     async createPost(req, res) {
         const post = new models.Post({
-            image: req.file.path,
+            image: {
+                data: fs.readFileSync(req.file.path),
+                contentType: req.file.mimetype
+            },
             title: req.body.title,
             article: req.body.article,
             author: req.body.author,
