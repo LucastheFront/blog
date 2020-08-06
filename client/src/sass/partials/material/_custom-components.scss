@@ -1,5 +1,22 @@
 @import 'variables/layout';
+@import 'material/custom-palettes';
 
-.new-post-dialog .mat-dialog-container {
-    padding: $sp5;
+// Custom material components in all application
+body {
+    .mat-dialog-container {
+        padding: $sp5;
+    }
+
+    .mat-button-base:not(.mat-fab) {
+        padding: $sp1 $sp3;
+    }
+
+    .mat-card {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        border-radius: 0px;
+        border: 1px solid map-get($map: $blog-accent-palette, $key: 500);
+        height: 100%;
+    }
 }

@@ -1,0 +1,28 @@
+@import 'mixins/typography';
+@import 'variables/layout';
+@import 'material/custom-palettes';
+
+.post {
+    .post-title {
+        @include h2;
+    }
+
+    .post-image {
+        object-fit: cover;
+        height: 180px;
+    }
+
+    .post-description {
+        @include extract(400);
+        color: map-get($map: $blog-on-palette, $key: on-background-medium-emphasis);
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+        margin-bottom: $sp3;
+    }
+
+    .post-author {
+        @include extract(400);
+    }
+}

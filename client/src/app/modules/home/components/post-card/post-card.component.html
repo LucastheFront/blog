@@ -1,8 +1,8 @@
-<mat-card class="post">
+<mat-card class="post mat-elevation-z0">
     <img class="post-image" mat-card-image src="http://localhost:5000/{{ uniquePost.image }}" alt="Post image">
     <mat-card-content>
         <mat-card-title class="post-title">{{ uniquePost.title }}</mat-card-title>
-        <p class="post-description">{{ uniquePost.article }}</p>
-        <p class="post-author">{{ uniquePost.author }}</p>
+        <p class="post-description">{{ uniquePost.article }}</p>  
     </mat-card-content>
+    <p class="post-author">{{ uniquePost.author }}</p>
 </mat-card>

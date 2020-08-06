@@ -18,6 +18,7 @@
     font-weight: $fw-bold;
     font-size: $fs2;
     letter-spacing: normal;
+    line-height: $lh;
 }
 
 @mixin body($fw-param) {
@@ -32,4 +33,5 @@
     font-weight: $fw-param;
     font-size: $fs0;
     letter-spacing: normal;
+    line-height: $lh;
 }
