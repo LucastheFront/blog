@@ -21,8 +21,6 @@ export class PostCardComponent implements OnInit {
             return data + String.fromCharCode(byte);
         }, '');
         const base64String = btoa(stringChar);
-        this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl('data:' + this.uniquePost.image.contentType + ';base64' + base64String);
-        this.imageUrl = this.imageUrl.changingThisBreaksApplicationSecurity;
-        console.log(this.imageUrl);
+        this.imageUrl = `data:image/jpeg;base64,${base64String}`;
     }
 }
