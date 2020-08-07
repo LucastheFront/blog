@@ -33,7 +33,7 @@ export class NewPostDialog {
         });
     }
 
-    getFileName(event): any {
+    getFileName(event: any): string {
         if (event && event.target.files) {
             this.picture = event.target.files[0];
             this.labelText = this.picture.name;
@@ -50,11 +50,9 @@ export class NewPostDialog {
         formData.append('author', this.newPostForm.get('author').value);
 
         this.httpService.createPost(formData).subscribe(
-            response => {
-                console.log(response),
-                this.dialogRef.close();
-            },
-            error => console.log(error));
+            response => this.dialogRef.close(),
+            error => console.log(error)
+        );
     }
 
 }

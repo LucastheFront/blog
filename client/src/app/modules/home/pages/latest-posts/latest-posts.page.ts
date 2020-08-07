@@ -22,6 +22,10 @@ export class LatestPostsPage implements OnInit {
     }
 
     ngOnInit(): void {
+        this.getAllPosts();
+    }
+
+    getAllPosts(): void {
         this.http.getPosts().subscribe(
             (response: Post[]) => this.posts = response,
             error => console.log(error)
@@ -29,9 +33,13 @@ export class LatestPostsPage implements OnInit {
     }
 
     openDialog(): void {
-        this.dialog.open(NewPostDialog, {
+        const dialogRef = this.dialog.open(NewPostDialog, {
             width: '500px',
             panelClass: 'new-post-dialog'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.getAllPosts();
         });
     }
 
