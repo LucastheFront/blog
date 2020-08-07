@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '@core/api/post.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'bg-post-card',
@@ -10,8 +11,12 @@ export class PostCardComponent implements OnInit {
     @Input() public uniquePost: Post;
     public serverUrl = 'http://localhost:5000/';
 
-    constructor() {}
+    constructor(private router: Router) {}
 
     ngOnInit(): void { }
+
+    goToPost(): void {
+        this.router.navigate(['/blog/', this.uniquePost._id]);
+    }
 
 }

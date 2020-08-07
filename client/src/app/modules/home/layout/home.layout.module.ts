@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { HeaderModule } from '@shared/header/header.component.module';
 import { HomeLayout } from './home.layout';
 import { LatestPostsPageModule } from '@modules/home/pages/latest-posts/latest-posts.page.module';
@@ -10,6 +11,7 @@ import { LatestPostsPageModule } from '@modules/home/pages/latest-posts/latest-p
     ],
     imports: [
         CommonModule,
+        RouterModule,
         HeaderModule,
         LatestPostsPageModule
     ],
