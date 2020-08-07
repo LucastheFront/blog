@@ -1,5 +1,7 @@
+import { PostImage } from '@core/api/post-image.model';
+
 export interface Post {
-    image: string;
+    image: PostImage;
     title: string;
     article: string;
     author: string;

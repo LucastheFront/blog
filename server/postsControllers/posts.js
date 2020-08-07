@@ -5,9 +5,7 @@ class PostsController {
     async getAllPosts (req, res) {
         try {
             const data = await models.Post.find();
-            res.status(200).json({
-                posts: data,
-            })
+            res.status(200).json(data);
         } catch (error) {
             res.status(500).json({message: error.message})
         }

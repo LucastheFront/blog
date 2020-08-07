@@ -23,10 +23,7 @@ export class LatestPostsPage implements OnInit {
 
     ngOnInit(): void {
         this.http.getPosts().subscribe(
-            (response: any) => {
-                console.log(response);
-                this.posts = response.posts;
-            },
+            (response: Post[]) => this.posts = response,
             error => console.log(error)
         );
     }

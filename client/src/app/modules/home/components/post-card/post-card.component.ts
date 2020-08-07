@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Post } from '@core/api/post.model';
 
 @Component({
@@ -8,11 +7,11 @@ import { Post } from '@core/api/post.model';
     styleUrls: ['./post-card.component.scss']
 })
 export class PostCardComponent implements OnInit {
-    @Input() uniquePost;
-    imageArrayBuffer: Array<number>;
-    imageUrl;
+    @Input() uniquePost: Post;
+    imageArrayBuffer: ArrayBuffer;
+    imageUrl: string;
 
-    constructor(private domSanitizer: DomSanitizer) {}
+    constructor() {}
 
     ngOnInit(): void {
         this.imageArrayBuffer = this.uniquePost.image.data.data;
