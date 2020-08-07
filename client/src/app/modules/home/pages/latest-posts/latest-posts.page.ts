@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BaseHttpService } from '@core/api/base-http.service';
-import { NewPostDialog } from '@modules/home/components/new-post-dialog/new-post.dialog';
 import { Post } from '@core/api/post.model';
+import { NewPostDialog } from '@modules/home/components/new-post-dialog/new-post.dialog';
 
 @Component({
     selector: 'bg-latest-posts',
@@ -14,7 +14,12 @@ import { Post } from '@core/api/post.model';
 export class LatestPostsPage implements OnInit {
     public posts: Post[];
 
-    constructor(private http: BaseHttpService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public dialog: MatDialog) {
+    constructor(
+        private http: BaseHttpService,
+        private iconRegistry: MatIconRegistry,
+        private sanitizer: DomSanitizer,
+        private dialog: MatDialog
+    ) {
         iconRegistry.addSvgIcon(
             'add-post',
             sanitizer.bypassSecurityTrustResourceUrl('assets/icons/addpost.svg')
@@ -25,14 +30,14 @@ export class LatestPostsPage implements OnInit {
         this.getAllPosts();
     }
 
-    getAllPosts(): void {
+    private getAllPosts(): void {
         this.http.getPosts().subscribe(
             (response: Post[]) => this.posts = response,
             error => console.log(error)
         );
     }
 
-    openDialog(): void {
+    public openDialog(): void {
         const dialogRef = this.dialog.open(NewPostDialog, {
             width: '500px',
             panelClass: 'new-post-dialog'

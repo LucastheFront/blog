@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BaseHttpService } from '@core/api/base-http.service';
 
 @Component({
@@ -13,19 +13,21 @@ import { BaseHttpService } from '@core/api/base-http.service';
 export class NewPostDialog {
     public labelText = 'Add a picture';
     public newPostForm: FormGroup;
-    public picture: File;
+    private picture: File;
 
-    constructor(public dialogRef: MatDialogRef<NewPostDialog>,
-                iconRegistry: MatIconRegistry,
-                sanitizer: DomSanitizer,
-                private httpService: BaseHttpService,
-                fb: FormBuilder) {
+    constructor(
+        private dialogRef: MatDialogRef<NewPostDialog>,
+        private iconRegistry: MatIconRegistry,
+        private sanitizer: DomSanitizer,
+        private httpService: BaseHttpService,
+        private fb: FormBuilder
+    ) {
         iconRegistry.addSvgIcon(
             'upload-image',
             sanitizer.bypassSecurityTrustResourceUrl('assets/icons/upload-image.svg')
         );
 
-        this.newPostForm = fb.group({
+        this.newPostForm = this.fb.group({
             image: ['', Validators.required],
             title: ['', Validators.required],
             article: ['', Validators.required],
@@ -33,7 +35,14 @@ export class NewPostDialog {
         });
     }
 
-    getFileName(event: any): string {
+    private createPost(data: FormData): void {
+        this.httpService.createPost(data).subscribe(
+            response => this.dialogRef.close(),
+            error => console.log(error)
+        );
+    }
+
+    public getFileName(event: any): string {
         if (event && event.target.files) {
             this.picture = event.target.files[0];
             this.labelText = this.picture.name;
@@ -42,17 +51,14 @@ export class NewPostDialog {
         return;
     }
 
-    onSubmit(): void {
+    public onSubmit(): void {
         const formData = new FormData();
         formData.append('image', this.picture);
         formData.append('title', this.newPostForm.get('title').value);
         formData.append('article', this.newPostForm.get('article').value);
         formData.append('author', this.newPostForm.get('author').value);
 
-        this.httpService.createPost(formData).subscribe(
-            response => this.dialogRef.close(),
-            error => console.log(error)
-        );
+        this.createPost(formData);
     }
 
 }

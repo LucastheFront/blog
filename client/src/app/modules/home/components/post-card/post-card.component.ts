@@ -7,11 +7,11 @@ import { Post } from '@core/api/post.model';
     styleUrls: ['./post-card.component.scss']
 })
 export class PostCardComponent implements OnInit {
-    @Input() uniquePost: Post;
-    serverUrl = 'http://localhost:5000/';
+    @Input() public uniquePost: Post;
+    public serverUrl = 'http://localhost:5000/';
 
     constructor() {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void { }
 
 }
