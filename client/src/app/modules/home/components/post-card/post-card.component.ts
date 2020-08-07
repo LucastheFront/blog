@@ -8,18 +8,10 @@ import { Post } from '@core/api/post.model';
 })
 export class PostCardComponent implements OnInit {
     @Input() uniquePost: Post;
-    imageArrayBuffer: ArrayBuffer;
-    imageUrl: string;
+    serverUrl = 'http://localhost:5000/';
 
     constructor() {}
 
-    ngOnInit(): void {
-        this.imageArrayBuffer = this.uniquePost.image.data.data;
-        const typedArray = new Uint8Array(this.imageArrayBuffer);
-        const stringChar = typedArray.reduce((data, byte) => {
-            return data + String.fromCharCode(byte);
-        }, '');
-        const base64String = btoa(stringChar);
-        this.imageUrl = `data:image/jpeg;base64,${base64String}`;
-    }
+    ngOnInit(): void {}
+
 }

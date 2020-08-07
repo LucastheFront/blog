@@ -42,10 +42,6 @@ export class NewPostDialog {
         return;
     }
 
-    onClose(): void {
-        this.dialogRef.close();
-    }
-
     onSubmit(): void {
         const formData = new FormData();
         formData.append('image', this.picture);
