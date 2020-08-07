@@ -1,1 +1,6 @@
-{{ id }}
+<div *ngIf="post">
+    <img src="{{ imageUrl }}{{ post.image }}" alt="Post image">
+    {{ post.title }}
+    {{ post.article }}
+    {{ post.author }}
+</div>

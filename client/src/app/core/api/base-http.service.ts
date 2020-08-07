@@ -8,11 +8,16 @@ import { Post } from './post.model';
 })
 export class BaseHttpService {
     private url = 'http://localhost:5000/api/v1';
+    public imageUrl = 'http://localhost:5000/';
 
     constructor(private httpClient: HttpClient) {}
 
     public getPosts(): Observable<Post[]> {
         return this.httpClient.get<Post[]>(`${this.url}/posts`);
+    }
+
+    public getPostById(id: string): Observable<Post> {
+        return this.httpClient.get<Post>(`${this.url}/posts/${id}`);
     }
 
     public createPost(post: FormData): Observable<Post> {
