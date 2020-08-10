@@ -1,6 +1,8 @@
-<div *ngIf="post">
-    <img src="{{ imageUrl }}{{ post.image }}" alt="Post image">
-    {{ post.title }}
-    {{ post.article }}
-    {{ post.author }}
+<div class="post" *ngIf="post">
+    <div class="image-container">
+        <img class="image" src="{{ imageUrl }}{{ post.image }}" alt="Post image">
+    </div>
+    <p class="title">{{ post.title }}</p>
+    <p class="article">{{ post.article }}</p>
+    <p class="author">{{ post.author }}</p>
 </div>

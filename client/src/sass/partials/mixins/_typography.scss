@@ -4,6 +4,15 @@
 @import '../material/theme-variables';
 @import '../variables/typography';
 
+@mixin post-title {
+    font-family: $title-typo;
+    font-style: normal;
+    font-weight: $fw-bold;
+    font-size: $fs4;
+    letter-spacing: normal;
+    line-height: $lh3;
+}
+
 @mixin h1 {
     font-family: $title-typo;
     font-style: normal;
@@ -18,7 +27,15 @@
     font-weight: $fw-bold;
     font-size: $fs2;
     letter-spacing: normal;
-    line-height: $lh;
+    line-height: $lh1;
+}
+
+@mixin article {
+    font-style: normal;
+    font-weight: $fw-regular;
+    font-size: $fs2;
+    line-height: $lh2;
+    letter-spacing: normal;
 }
 
 @mixin body($fw-param) {
@@ -33,5 +50,5 @@
     font-weight: $fw-param;
     font-size: $fs0;
     letter-spacing: normal;
-    line-height: $lh;
+    line-height: $lh1;
 }
