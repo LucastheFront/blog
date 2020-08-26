@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  server:
+    image: node
+    container_name: blog-server
+    ports: 
+      - "5000:5000"
+    command: bash -c "npm install && npm run start"
+    volumes: 
+      - "./server:/usr/server"
+    working_dir: /usr/server
+
+  client:
+    image: trion/ng-cli:10.0.7
+    container_name: blog-client
+    ports:
+      - "4200:4200"
+    command: bash -c "npm install && ng serve --host 0.0.0.0"
+    depends_on: 
+      - server
+    volumes: 
+      - "./client:/usr/client"
+    working_dir: /usr/client

@@ -18,5 +18,9 @@ body {
         border-radius: 0px;
         border: 1px solid map-get($map: $blog-accent-palette, $key: 500);
         height: 100%;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
