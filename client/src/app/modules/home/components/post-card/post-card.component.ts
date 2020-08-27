@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post } from '@core/api/post.model';
+import { Post } from '@business/posts/models/post.model';
 import { Router } from '@angular/router';
-import { BaseHttpService } from '@core/api/base-http.service';
+import { PostService } from '@business/posts/services/posts.service';
 
 @Component({
     selector: 'bg-post-card',
@@ -12,7 +12,7 @@ export class PostCardComponent implements OnInit {
     @Input() public uniquePost: Post;
     public imageUrl = this.http.imageUrl;
 
-    constructor(private router: Router, private http: BaseHttpService) {}
+    constructor(private router: Router, private http: PostService) {}
 
     ngOnInit(): void { }
 

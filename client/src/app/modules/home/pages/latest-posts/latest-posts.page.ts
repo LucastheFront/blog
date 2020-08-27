@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BaseHttpService } from '@core/api/base-http.service';
-import { Post } from '@core/api/post.model';
+import { PostService } from '@business/posts/services/posts.service';
+import { Post } from '@business/posts/models/post.model';
 import { NewPostDialog } from '@modules/home/components/new-post-dialog/new-post.dialog';
 
 @Component({
@@ -15,7 +15,7 @@ export class LatestPostsPage implements OnInit {
     public posts: Post[];
 
     constructor(
-        private http: BaseHttpService,
+        private postService: PostService,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer,
         private dialog: MatDialog
@@ -31,7 +31,7 @@ export class LatestPostsPage implements OnInit {
     }
 
     private getAllPosts(): void {
-        this.http.getPosts().subscribe(
+        this.postService.getAllPosts().subscribe(
             (response: Post[]) => this.posts = response,
             error => console.log(error)
         );

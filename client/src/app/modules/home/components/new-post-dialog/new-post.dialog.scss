@@ -4,7 +4,7 @@
 
 .upload-image {
     @include body(500);
-    color: map-get($map: $blog-on-palette, $key: on-background-medium-emphasis);
+    color: mat-color($blog-on-palette, on-background-medium-emphasis);
     display: flex;
     align-items: center;
     margin: $sp5 0 $sp3 0;

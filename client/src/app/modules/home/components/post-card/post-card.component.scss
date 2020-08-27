@@ -14,7 +14,7 @@
 
     .post-description {
         @include extract(400);
-        color: map-get($map: $blog-on-palette, $key: on-background-medium-emphasis);
+        color: mat-color($blog-on-palette, on-background-medium-emphasis);
         display: -webkit-box;
         -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;  

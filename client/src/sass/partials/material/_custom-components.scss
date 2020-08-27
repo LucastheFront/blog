@@ -16,7 +16,7 @@ body {
         display: grid;
         grid-template-rows: auto 1fr auto;
         border-radius: 0px;
-        border: 1px solid map-get($map: $blog-accent-palette, $key: 500);
+        border: 1px solid mat-color($blog-accent-palette, 500);
         height: 100%;
 
         &:hover {

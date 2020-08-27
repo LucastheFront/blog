@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BaseHttpService } from '@core/api/base-http.service';
+import { PostService } from '@business/posts/services/posts.service';
 
 @Component({
     selector: 'bg-new-post-dialog',
@@ -19,7 +19,7 @@ export class NewPostDialog {
         private dialogRef: MatDialogRef<NewPostDialog>,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer,
-        private httpService: BaseHttpService,
+        private httpService: PostService,
         private fb: FormBuilder
     ) {
         iconRegistry.addSvgIcon(

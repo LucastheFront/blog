@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BaseHttpService } from '@core/api/base-http.service';
-import { Post } from '@core/api/post.model';
+import { Post } from '@business/posts/models/post.model';
+import { PostService } from '@business/posts/services/posts.service';
 
 @Component({
     selector: 'bg-post-detail',
@@ -15,7 +15,7 @@ export class PostDetailComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private http: BaseHttpService
+        private http: PostService
     ) {
         this.route.paramMap.subscribe(params => {
             this.id = params.get('id');

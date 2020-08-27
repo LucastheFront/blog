@@ -16,7 +16,7 @@
             content: '';
             width: 100%;
             height: 1px;
-            background-color: map-get($map: $blog-accent-palette, $key: 500);
+            background-color: mat-color($blog-accent-palette, 500);
             margin-top: $sp2;
             margin-bottom: $sp4;
         }
